@@ -1,0 +1,260 @@
+/* $TITLE **********************************************************************
+
+  Style rules for Highvisibilityproject.org
+  Jump to individual sections by searching for "$SECTION contrast"
+
+*******************************************************************************/
+
+/* $CONTENTS *******************************************************************
+
+  * Imports
+  * Mixins
+  * Variables
+  * Grid
+  * Breakpoints
+  * Base
+  * Layout
+  * Typography
+  * Anchors
+  * Media Queries
+
+*******************************************************************************/
+
+/* $IMPORTS *******************************************************************/
+
+@import "compass/reset/";
+@import "compass/css3/";
+@import "compass/layout/";
+@import "compass/typography/";
+@import "compass/utilities/general/clearfix";
+@import "susy";
+
+/* $MIXINS ********************************************************************/
+
+@include sticky-footer(22em, ".page", ".page-footer", "footer");
+
+/* $VARIABLES *****************************************************************/
+
+$base:              #689aca;
+$contrast:          #ed6438;
+$shadow:            #366797;
+$foreground:        #464646;
+$foreground-light:  #999999;
+$background:        #ffffff;
+$border-light:      #efefef;
+
+/* $GRID **********************************************************************/
+
+$total-columns: 10;
+$column-width:  4em;
+$gutter-width:  1em;
+$grid-padding:  $gutter-width;
+
+/* $BREAKPOINTS ***************************************************************/
+
+/* $BASE **********************************************************************/
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: $background;
+  color: $foreground;
+  font-family: "ff-tisa-web-pro", serif;
+  line-height: 160%;
+}
+
+.page {
+  @include container;
+}
+
+/* $LAYOUT ********************************************************************/
+
+.menu-wrapper {
+  @include clearfix;
+  background-color: $border-light;
+  padding: 0.5em 0;
+}
+
+.menu {
+  @include container;
+  position: relative;
+}
+
+.menu-icon {
+  color: $foreground-light;
+  float: right;
+}
+
+.menu-items {
+  padding: 0.25em 0;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  visibility: hidden;
+  li {
+    font-family: "brandon-grotesque", sans-serif;
+    font-weight: 500;
+    display: inline-block;
+    margin-right: 2em;
+    text-transform: uppercase;
+  }
+}
+
+.menu:hover .menu-items {
+  visibility: visible;
+}
+
+header {
+  padding-top: 6em;
+  text-align: center;
+  p {
+    border-bottom: 2px solid $border-light;
+    border-top: 2px solid $border-light;
+    color: $foreground-light;
+    font-size: 1em;
+    font-style: italic;
+    margin: 1em 0;
+    padding: 0.5em 0 0.75em 0;
+  }
+}
+
+article {
+  border-bottom: 2px solid $border-light;
+  margin: 4em 0;
+  padding-bottom: 1em;
+  text-align: center;
+  p, ul {
+    margin: 1em auto;
+    text-align: left;
+    width: 80%;
+  }
+  &.video {
+    p:last-of-type {
+      padding-top: 1em;
+      text-align: center;
+    }
+    h3 {
+      color: $foreground-light;
+    }
+  }
+}
+
+footer {
+  background-color: $border-light;
+  border-bottom: 3em solid $foreground;
+  .footer-content {
+    @include container;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    .about {
+      @include span-columns(4 alpha, 12);
+    }
+    .submit {
+      @include span-columns(4, 12);
+    }
+    .connect {
+      @include span-columns(4 omega, 12);
+    }
+    p:last-of-type {
+      font-style: italic;
+      padding-top: 1em;
+    }
+    ul {
+      margin: 2em 0;
+      text-align: center;
+      li {
+        display: inline-block;
+        margin: 0.5em;
+      }
+    }
+  }
+}
+
+/* $TYPOGRAPHY ****************************************************************/
+
+h1, h2, h3, h4, .reference, .back {
+  font-family: "brandon-grotesque", sans-serif;
+  font-weight: 600;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: $contrast;
+  font-size: 2.2em;
+  letter-spacing: 4px;
+  padding-top: 0.5em;
+  &:before {
+    color: $foreground-light;
+    content: "The";
+    display: block;
+    font-size: 0.5em;
+    font-weight: 500;
+  }
+}
+
+h2 {
+  font-size: 1.4em;
+  letter-spacing: 2px;
+  padding-bottom: 1em;
+}
+
+h3 {
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+}
+
+h4 {
+  margin: 2em auto 0 auto;
+  text-align: left;
+  width: 80%;
+}
+
+/* $ANCHORS *******************************************************************/
+
+a {
+  border-bottom: 1px solid #dddddd;
+  color: $contrast;
+  text-decoration: none;
+  &:hover {
+    border-bottom: 1px solid $foreground-light;
+  }
+}
+
+h1 a, h2 a, a h2, .menu-items li a {
+  border-bottom: none;
+  color: $foreground;
+  &:hover {
+    border-bottom: none;
+    color: $contrast;
+  }
+}
+
+.reference {
+  border-bottom: none;
+  color: $foreground-light;
+  display: inline-block;
+  &:hover {
+    border-bottom: none;
+    color: $foreground;
+  }
+  &:first-of-type {
+    margin-right: 1em;
+  }
+}
+
+.back {
+  @include border-radius(3px);
+  border-bottom: none;
+  border: 3px solid $contrast;
+  display: block;
+  margin: 0 auto 3em auto;
+  padding: 1em;
+  text-align: center;
+  width: 120px;
+  &:hover {
+    border: 3px solid $contrast;
+  }
+}

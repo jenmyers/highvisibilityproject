@@ -1,0 +1,11 @@
+{% include header.html %}
+
+<article class="video">
+  <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+  <h3>{{ page.date | date_to_long_string }}</h3>
+  {{ content }}
+</article>
+
+<a class="back" href="/">All stories</a>
+
+{% include footer.html %}
